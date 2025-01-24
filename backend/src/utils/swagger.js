@@ -18,10 +18,9 @@ function setupSwagger(app) {
         {
           url: "http://localhost:3000",
         },
-        // Se quiser expor no ambiente de produção (AWS API Gateway), substitua aqui
-        // {
-        //   url: "https://SEU-API-ID.execute-api.us-east-1.amazonaws.com/dev",
-        // },
+        {
+          url: "https://SEU-API-ID.execute-api.us-east-1.amazonaws.com/dev",
+        },
       ],
     },
     apis: ["./src/routes/*.js", "./src/controllers/*.js"],

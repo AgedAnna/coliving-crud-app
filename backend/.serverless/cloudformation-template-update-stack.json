@@ -182,7 +182,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coliving-backend/dev/1737762226427-2025-01-24T23:43:46.427Z/coliving-backend.zip"
+          "S3Key": "serverless/coliving-backend/dev/1737762456873-2025-01-24T23:47:36.873Z/coliving-backend.zip"
         },
         "Handler": "src/index.handler",
         "Runtime": "nodejs18.x",
@@ -214,7 +214,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coliving-backend/dev/1737762226427-2025-01-24T23:43:46.427Z/coliving-backend.zip"
+          "S3Key": "serverless/coliving-backend/dev/1737762456873-2025-01-24T23:47:36.873Z/coliving-backend.zip"
         },
         "Handler": "src/importHandler.handler",
         "Runtime": "nodejs18.x",
@@ -239,24 +239,24 @@
         "ImportarPessoasLogGroup"
       ]
     },
-    "AppLambdaVersionDFvMgaflDjzuHG40FebQKlkAcAyHLXI5vaTr6dwqI": {
+    "AppLambdaVersionqVAL9AoosnLF3K7aFmF0d5vr1JMhdgPVAwRfraIspdc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "CNvk99XNkZI9gv8CUr1fcUuew4ZG/3lboheIJWVuu8Q="
+        "CodeSha256": "9/z9iCbU1C9FEpaeXG7jF4sCUMD9+8aSx7NVBAGPFDc="
       }
     },
-    "ImportarPessoasLambdaVersionku9jRR4vT3kT3r9UPiVNCL5Wh8V9d4H6qLFXXMAWFY4": {
+    "ImportarPessoasLambdaVersionxXP9uvzWn7NC5fxXLcPItPXxV76Sy2jC8rblmd0yxNI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ImportarPessoasLambdaFunction"
         },
-        "CodeSha256": "CNvk99XNkZI9gv8CUr1fcUuew4ZG/3lboheIJWVuu8Q="
+        "CodeSha256": "9/z9iCbU1C9FEpaeXG7jF4sCUMD9+8aSx7NVBAGPFDc="
       }
     },
     "ImportarPessoasEventsRuleSchedule1": {
@@ -308,6 +308,21 @@
         "Policy": ""
       }
     },
+    "ApiGatewayResourceApiDashdocs": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "api-docs",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
     "ApiGatewayResourceApi": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -354,6 +369,96 @@
           "Ref": "ApiGatewayResourceApiPessoas"
         },
         "PathPart": "{id}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodApiDashdocsOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApiDashdocs"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodApiOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -541,6 +646,98 @@
           "Ref": "ApiGatewayRestApi"
         }
       }
+    },
+    "ApiGatewayMethodApiDashdocsAny": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApiDashdocs"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "AppLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "AppLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodApiAny": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "AppLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "AppLambdaPermissionApiGateway"
+      ]
     },
     "ApiGatewayMethodGet": {
       "Type": "AWS::ApiGateway::Method",
@@ -867,7 +1064,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1737762219472": {
+    "ApiGatewayDeployment1737762449794": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -876,10 +1073,14 @@
         "StageName": "dev"
       },
       "DependsOn": [
+        "ApiGatewayMethodApiDashdocsOptions",
+        "ApiGatewayMethodApiOptions",
         "ApiGatewayMethodOptions",
         "ApiGatewayMethodApiPessoasOptions",
         "ApiGatewayMethodApiPessoasImportarOptions",
         "ApiGatewayMethodApiPessoasIdVarOptions",
+        "ApiGatewayMethodApiDashdocsAny",
+        "ApiGatewayMethodApiAny",
         "ApiGatewayMethodGet",
         "ApiGatewayMethodApiPessoasPost",
         "ApiGatewayMethodApiPessoasImportarPost",
@@ -976,7 +1177,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionDFvMgaflDjzuHG40FebQKlkAcAyHLXI5vaTr6dwqI"
+        "Ref": "AppLambdaVersionqVAL9AoosnLF3K7aFmF0d5vr1JMhdgPVAwRfraIspdc"
       },
       "Export": {
         "Name": "sls-coliving-backend-dev-AppLambdaFunctionQualifiedArn"
@@ -985,7 +1186,7 @@
     "ImportarPessoasLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ImportarPessoasLambdaVersionku9jRR4vT3kT3r9UPiVNCL5Wh8V9d4H6qLFXXMAWFY4"
+        "Ref": "ImportarPessoasLambdaVersionxXP9uvzWn7NC5fxXLcPItPXxV76Sy2jC8rblmd0yxNI"
       },
       "Export": {
         "Name": "sls-coliving-backend-dev-ImportarPessoasLambdaFunctionQualifiedArn"
