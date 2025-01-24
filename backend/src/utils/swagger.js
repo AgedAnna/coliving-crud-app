@@ -19,7 +19,7 @@ const setupSwagger = (app) => {
           url: "http://localhost:3000",
         },
         {
-          url: "https://8dq7txnykc.execute-api.us-east-1.amazonaws.com/dev/",
+          url: "https://8dq7txnykc.execute-api.us-east-1.amazonaws.com/dev",
         },
       ],
     },
