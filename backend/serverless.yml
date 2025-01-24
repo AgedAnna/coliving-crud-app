@@ -1,0 +1,89 @@
+service: coliving-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ${env:AWS_REGION, 'us-east-1'}
+  environment:
+    DYNAMODB_TABLE_PESSOAS: ${env:DYNAMODB_TABLE_PESSOAS}
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:*"
+          Resource:
+            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE_PESSOAS}"
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Query"
+          Resource:
+            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE_PESSOAS}/index/EmailIndex"
+
+functions:
+  app:
+    handler: src/index.handler
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+      - http:
+          path: /api/pessoas
+          method: post
+          cors: true
+      - http:
+          path: /api/pessoas/importar
+          method: post
+          cors: true
+      - http:
+          path: /api/pessoas
+          method: get
+          cors: true
+      - http:
+          path: /api/pessoas/{id}
+          method: get
+          cors: true
+      - http:
+          path: /api/pessoas/{id}
+          method: put
+          cors: true
+      - http:
+          path: /api/pessoas/{id}
+          method: delete
+          cors: true
+
+  importarPessoas:
+    handler: src/importHandler.handler
+    events:
+      - schedule:
+          rate: rate(24 hours)
+          enabled: true
+
+plugins:
+  - serverless-offline
+
+resources:
+  Resources:
+    PessoasDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_PESSOAS}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: EmailIndex
+            KeySchema:
+              - AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        BillingMode: PAY_PER_REQUEST
