@@ -1,8 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const serverless = require("serverless-http");
-const { setupSwagger } = require("./utils/swagger");
 const pessoaRoutes = require("./routes/pessoaRoutes");
+const { setupSwagger } = require("./utils/swagger");
 
 dotenv.config();
 
@@ -21,7 +21,6 @@ const handler = serverless(app);
 module.exports.handler = handler;
 
 if (process.env.NODE_ENV !== "production") {
-  setupSwagger(app);
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

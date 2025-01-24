@@ -182,7 +182,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coliving-backend/dev/1737761193425-2025-01-24T23:26:33.425Z/coliving-backend.zip"
+          "S3Key": "serverless/coliving-backend/dev/1737761507675-2025-01-24T23:31:47.675Z/coliving-backend.zip"
         },
         "Handler": "src/index.handler",
         "Runtime": "nodejs18.x",
@@ -214,7 +214,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/coliving-backend/dev/1737761193425-2025-01-24T23:26:33.425Z/coliving-backend.zip"
+          "S3Key": "serverless/coliving-backend/dev/1737761507675-2025-01-24T23:31:47.675Z/coliving-backend.zip"
         },
         "Handler": "src/importHandler.handler",
         "Runtime": "nodejs18.x",
@@ -239,24 +239,24 @@
         "ImportarPessoasLogGroup"
       ]
     },
-    "AppLambdaVersionaLMK1rQB3ERnEOmnL2UUSmUax9S6fZ5Yhts0tUI6vw": {
+    "AppLambdaVersionrfyvoIWTqWfHzON0SDBJjBqOz9qxgL02X1rygkTs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "JhZFKbz7XbMzr7nRAWY8WbM6Mg6T2Ed+3fCbvE9RcdE="
+        "CodeSha256": "wNl50G+R6sU+GW4BlboyraS5sKZEHbLKYl0x+WN/uPY="
       }
     },
-    "ImportarPessoasLambdaVersion6YFt0wLW9IbzvnZ4MkPikuAhfR7ttcZzGqUn63hvXA": {
+    "ImportarPessoasLambdaVersion2F2MUTFuEsyXarYLxk6lkEvC5OkRuoAHuL80WLwbsa8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ImportarPessoasLambdaFunction"
         },
-        "CodeSha256": "JhZFKbz7XbMzr7nRAWY8WbM6Mg6T2Ed+3fCbvE9RcdE="
+        "CodeSha256": "wNl50G+R6sU+GW4BlboyraS5sKZEHbLKYl0x+WN/uPY="
       }
     },
     "ImportarPessoasEventsRuleSchedule1": {
@@ -867,7 +867,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1737761186624": {
+    "ApiGatewayDeployment1737761501001": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -976,7 +976,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionaLMK1rQB3ERnEOmnL2UUSmUax9S6fZ5Yhts0tUI6vw"
+        "Ref": "AppLambdaVersionrfyvoIWTqWfHzON0SDBJjBqOz9qxgL02X1rygkTs"
       },
       "Export": {
         "Name": "sls-coliving-backend-dev-AppLambdaFunctionQualifiedArn"
@@ -985,7 +985,7 @@
     "ImportarPessoasLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ImportarPessoasLambdaVersion6YFt0wLW9IbzvnZ4MkPikuAhfR7ttcZzGqUn63hvXA"
+        "Ref": "ImportarPessoasLambdaVersion2F2MUTFuEsyXarYLxk6lkEvC5OkRuoAHuL80WLwbsa8"
       },
       "Export": {
         "Name": "sls-coliving-backend-dev-ImportarPessoasLambdaFunctionQualifiedArn"

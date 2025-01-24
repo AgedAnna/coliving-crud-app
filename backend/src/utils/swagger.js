@@ -5,7 +5,7 @@ const swaggerUi = require("swagger-ui-express");
  * Configura o Swagger no aplicativo Express.
  * @param {import('express').Express} app
  */
-const setupSwagger = (app) => {
+function setupSwagger(app) {
   const options = {
     definition: {
       openapi: "3.0.0",
@@ -18,16 +18,18 @@ const setupSwagger = (app) => {
         {
           url: "http://localhost:3000",
         },
-        {
-          url: "https://8dq7txnykc.execute-api.us-east-1.amazonaws.com/dev",
-        },
+        // Se quiser expor no ambiente de produção (AWS API Gateway), substitua aqui
+        // {
+        //   url: "https://SEU-API-ID.execute-api.us-east-1.amazonaws.com/dev",
+        // },
       ],
     },
     apis: ["./src/routes/*.js", "./src/controllers/*.js"],
   };
 
   const specs = swaggerJsdoc(options);
+
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-};
+}
 
 module.exports = { setupSwagger };
