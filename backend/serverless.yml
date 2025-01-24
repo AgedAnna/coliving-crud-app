@@ -28,6 +28,14 @@ functions:
     handler: src/index.handler
     events:
       - http:
+          path: /api-docs
+          method: ANY
+          cors: true
+       - http:
+          path: /api
+          method: ANY
+          cors: true
+      - http:
           path: /
           method: get
           cors: true

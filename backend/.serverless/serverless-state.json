@@ -211,7 +211,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/coliving-backend/dev/1737761507675-2025-01-24T23:31:47.675Z/coliving-backend.zip"
+                "S3Key": "serverless/coliving-backend/dev/1737762226427-2025-01-24T23:43:46.427Z/coliving-backend.zip"
               },
               "Handler": "src/index.handler",
               "Runtime": "nodejs18.x",
@@ -243,7 +243,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/coliving-backend/dev/1737761507675-2025-01-24T23:31:47.675Z/coliving-backend.zip"
+                "S3Key": "serverless/coliving-backend/dev/1737762226427-2025-01-24T23:43:46.427Z/coliving-backend.zip"
               },
               "Handler": "src/importHandler.handler",
               "Runtime": "nodejs18.x",
@@ -268,24 +268,24 @@
               "ImportarPessoasLogGroup"
             ]
           },
-          "AppLambdaVersionrfyvoIWTqWfHzON0SDBJjBqOz9qxgL02X1rygkTs": {
+          "AppLambdaVersionDFvMgaflDjzuHG40FebQKlkAcAyHLXI5vaTr6dwqI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "wNl50G+R6sU+GW4BlboyraS5sKZEHbLKYl0x+WN/uPY="
+              "CodeSha256": "CNvk99XNkZI9gv8CUr1fcUuew4ZG/3lboheIJWVuu8Q="
             }
           },
-          "ImportarPessoasLambdaVersion2F2MUTFuEsyXarYLxk6lkEvC5OkRuoAHuL80WLwbsa8": {
+          "ImportarPessoasLambdaVersionku9jRR4vT3kT3r9UPiVNCL5Wh8V9d4H6qLFXXMAWFY4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ImportarPessoasLambdaFunction"
               },
-              "CodeSha256": "wNl50G+R6sU+GW4BlboyraS5sKZEHbLKYl0x+WN/uPY="
+              "CodeSha256": "CNvk99XNkZI9gv8CUr1fcUuew4ZG/3lboheIJWVuu8Q="
             }
           },
           "ImportarPessoasEventsRuleSchedule1": {
@@ -896,7 +896,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1737761501001": {
+          "ApiGatewayDeployment1737762219472": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1005,7 +1005,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionrfyvoIWTqWfHzON0SDBJjBqOz9qxgL02X1rygkTs"
+              "Ref": "AppLambdaVersionDFvMgaflDjzuHG40FebQKlkAcAyHLXI5vaTr6dwqI"
             },
             "Export": {
               "Name": "sls-coliving-backend-dev-AppLambdaFunctionQualifiedArn"
@@ -1014,7 +1014,7 @@
           "ImportarPessoasLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ImportarPessoasLambdaVersion2F2MUTFuEsyXarYLxk6lkEvC5OkRuoAHuL80WLwbsa8"
+              "Ref": "ImportarPessoasLambdaVersionku9jRR4vT3kT3r9UPiVNCL5Wh8V9d4H6qLFXXMAWFY4"
             },
             "Export": {
               "Name": "sls-coliving-backend-dev-ImportarPessoasLambdaFunctionQualifiedArn"
@@ -1316,7 +1316,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionrfyvoIWTqWfHzON0SDBJjBqOz9qxgL02X1rygkTs"
+        "versionLogicalId": "AppLambdaVersionDFvMgaflDjzuHG40FebQKlkAcAyHLXI5vaTr6dwqI"
       },
       "importarPessoas": {
         "handler": "src/importHandler.handler",
@@ -1336,7 +1336,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "ImportarPessoasLambdaVersion2F2MUTFuEsyXarYLxk6lkEvC5OkRuoAHuL80WLwbsa8"
+        "versionLogicalId": "ImportarPessoasLambdaVersionku9jRR4vT3kT3r9UPiVNCL5Wh8V9d4H6qLFXXMAWFY4"
       }
     },
     "resources": {
@@ -1404,7 +1404,7 @@
     "artifact": "/home/locadm/Desktop/pessoal/coliving-crud-app/backend/.serverless/coliving-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/coliving-backend/dev/1737761507675-2025-01-24T23:31:47.675Z",
+    "artifactDirectoryName": "serverless/coliving-backend/dev/1737762226427-2025-01-24T23:43:46.427Z",
     "artifact": "coliving-backend.zip"
   }
 }
