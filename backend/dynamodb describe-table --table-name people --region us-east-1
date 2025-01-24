@@ -10,7 +10,7 @@
                 "AttributeType": "S"
             }
         ],
-        "TableName": "people",
+        "TableName": "peoples",
         "KeySchema": [
             {
                 "AttributeName": "id",
@@ -26,7 +26,7 @@
         },
         "TableSizeBytes": 0,
         "ItemCount": 0,
-        "TableArn": "arn:aws:dynamodb:us-east-1:064215939535:table/people",
+        "TableArn": "arn:aws:dynamodb:us-east-1:064215939535:table/peoples",
         "TableId": "1683a556-58ea-44e0-831a-95abb650b605",
         "BillingModeSummary": {
             "BillingMode": "PAY_PER_REQUEST",
@@ -53,7 +53,7 @@
                 },
                 "IndexSizeBytes": 0,
                 "ItemCount": 0,
-                "IndexArn": "arn:aws:dynamodb:us-east-1:064215939535:table/people/index/EmailIndex"
+                "IndexArn": "arn:aws:dynamodb:us-east-1:064215939535:table/peoples/index/EmailIndex"
             }
         ],
         "DeletionProtectionEnabled": false

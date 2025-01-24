@@ -5,7 +5,6 @@ const swaggerUi = require("swagger-ui-express");
  * Configura o Swagger no aplicativo Express.
  * @param {import('express').Express} app
  */
-
 const setupSwagger = (app) => {
   const options = {
     definition: {
@@ -19,12 +18,12 @@ const setupSwagger = (app) => {
         {
           url: "http://localhost:3000",
         },
-        // {
-        //   url: 'https://YOUR_API_GATEWAY_URL',
-        // },
+        {
+          url: "https://8dq7txnykc.execute-api.us-east-1.amazonaws.com/dev/",
+        },
       ],
     },
-    apis: ["./src/routes/*.js", "./src/models/*.js"],
+    apis: ["./src/routes/*.js", "./src/controllers/*.js"],
   };
 
   const specs = swaggerJsdoc(options);

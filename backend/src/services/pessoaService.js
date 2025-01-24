@@ -15,7 +15,7 @@ const {
  */
 const criarPessoa = async (pessoa) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
     Item: pessoa,
   };
 
@@ -34,7 +34,7 @@ const criarPessoa = async (pessoa) => {
  */
 const listarPessoas = async () => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
   };
 
   try {
@@ -54,7 +54,7 @@ const listarPessoas = async () => {
  */
 const obterPessoaPorId = async (id) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
     Key: { id },
   };
 
@@ -75,7 +75,7 @@ const obterPessoaPorId = async (id) => {
  */
 const obterPessoaPorEmail = async (email) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
     IndexName: "EmailIndex", // Nome exato do índice
     KeyConditionExpression: "email = :e",
     ExpressionAttributeValues: {
@@ -116,7 +116,7 @@ const atualizarPessoa = async (id, atualizacoes) => {
   }
 
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
     Key: { id },
     UpdateExpression: `SET ${campos.join(", ")}`,
     ExpressionAttributeNames: nomesAtributos,
@@ -143,7 +143,7 @@ const atualizarPessoa = async (id, atualizacoes) => {
  */
 const deletarPessoa = async (id) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "people",
+    TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
     Key: { id },
   };
 
