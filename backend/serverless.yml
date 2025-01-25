@@ -28,40 +28,8 @@ functions:
     handler: src/index.handler
     events:
       - http:
-          path: /api-docs
+          path: /{proxy+}
           method: ANY
-          cors: true
-      - http:
-          path: /api
-          method: ANY
-          cors: true
-      - http:
-          path: /
-          method: get
-          cors: true
-      - http:
-          path: /api/pessoas
-          method: post
-          cors: true
-      - http:
-          path: /api/pessoas/importar
-          method: post
-          cors: true
-      - http:
-          path: /api/pessoas
-          method: get
-          cors: true
-      - http:
-          path: /api/pessoas/{id}
-          method: get
-          cors: true
-      - http:
-          path: /api/pessoas/{id}
-          method: put
-          cors: true
-      - http:
-          path: /api/pessoas/{id}
-          method: delete
           cors: true
 
   importarPessoas:

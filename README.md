@@ -76,7 +76,7 @@ Antes de iniciar, certifique-se de ter o seguinte instalado no seu sistema:
 AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
 AWS_REGION=us-east-1
-DYNAMODB_TABLE_PESSOAS=people
+DYNAMODB_TABLE_PESSOAS=peoples
 YOLO_API_URL=YOUR_URL
 PORT=3000
 
