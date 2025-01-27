@@ -77,7 +77,7 @@ const EditUserDialog: React.FC<EditUserDialogProps> = ({
       cancelText="Cancelar"
       confirmLoading={isLoading}
       okButtonProps={{
-        className: styles.button,
+        className: styles.buttonEdit,
       }}
     >
       {isLoading ? (

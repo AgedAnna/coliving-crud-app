@@ -17,7 +17,7 @@ import {
   UserDeleteOutlined,
 } from "@ant-design/icons";
 import DeleteUserDialog from "./DeleteUserDialog";
-import { Col, notification, Row } from "antd";
+import { notification } from "antd";
 import CreateUserDialog from "./CreateUserDialog";
 import { Pessoa } from "../services/interface";
 import Filters from "./Filters";
@@ -172,7 +172,7 @@ const UsersPage: React.FC = () => {
       const data = await importarPessoas();
       api.success({
         message: "Sucesso",
-        description: "Usuário excluído com sucesso!",
+        description: "Integração realizada com sucesso!",
         placement: "topRight",
         duration: 3,
       });
@@ -191,95 +191,95 @@ const UsersPage: React.FC = () => {
   };
 
   return (
-    <Box bg="#F3F4F8" minH="100vh" p={4}>
+    <Box className={styles.container}>
       {contextHolder}
-      <Row
-        justify="space-between"
-        align="middle"
-        style={{ marginBottom: "10px", display: "flex", alignItems: "center" }}
-      >
-        <Col style={{ marginRight: "auto" }}>
+      <Flex className={styles.header}>
+        <Box className={styles.syncButton}>
           <SyncOutlined
             spin={isLoading}
             onClick={integracaoPessoas}
             className={styles.spin}
           />
-        </Col>
+        </Box>
 
-        <Col style={{ marginRight: "10px" }}>
+        <Box className={styles.filters}>
           <Filters onApplyFilters={handleApplyFilters} />
-        </Col>
+        </Box>
 
-        <Col>
-          <Button onClick={handleCreateUser}>
+        <Box className={styles.addButton}>
+          <Button className={styles.button} onClick={handleCreateUser}>
             <PlusOutlined /> Adicionar
           </Button>
-        </Col>
-      </Row>
+        </Box>
+      </Flex>
 
-      <Box bg="white" p="20px" borderRadius="md">
+      <Box className={styles.mainContent}>
         {isLoaded ? (
-          <table style={{ width: "100%" }}>
-            <tbody>
-              {pessoas.map((item) => (
-                <tr key={item.id} style={{ borderBottom: "1px solid #E2E8F0" }}>
-                  <td style={{ padding: "10px" }}>
-                    <Box
-                      bg="#F0F0FA"
-                      borderRadius="full"
-                      w="80px"
-                      h="80px"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <FaUser color="#0198DF" size={30} />
-                    </Box>
-                  </td>
-
-                  <td style={{ padding: "10px" }}>
-                    <Box fontWeight="bold" color="#EC017A" fontSize="20px">
-                      {item.nome}
-                    </Box>
-                    <Box color="#C0C2C2">{item.email}</Box>
-                    <Box color="#C0C2C2">{item.telefone}</Box>
-                    <Box fontWeight="bold" color="#9D9CA1">
-                      Sem endereço informado
-                    </Box>
-                  </td>
-
-                  <td
-                    style={{
-                      padding: "10px",
-                      color: "#BDC1C4",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {new Date(item.dataDeCadastro).toLocaleDateString("pt-BR")}
-                  </td>
-
-                  <td style={{ padding: "10px" }}>
-                    <Flex justify="flex-end">
-                      <EditOutlined
-                        onClick={() => handleEdit(item)}
-                        className={styles.iconEdit}
-                      />
-                      <UserDeleteOutlined
-                        onClick={() => handleDelete(item)}
-                        className={styles.iconDelete}
-                      />
-                    </Flex>
-                  </td>
+          <div className={styles.tableContainer}>
+            <table className={styles.userTable}>
+              <thead>
+                <tr>
+                  <th>Avatar</th>
+                  <th>Informações</th>
+                  <th>Data de Cadastro</th>
+                  <th>Ações</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {pessoas.map((item) => (
+                  <tr key={item.id}>
+                    <td data-label="Avatar">
+                      <Box className={styles.avatar}>
+                        <FaUser color="#0198DF" size={30} />
+                      </Box>
+                    </td>
+
+                    <td data-label="Informações">
+                      <Box className={styles.userInfo}>
+                        <Box className={styles.userName}>{item.nome}</Box>
+                        <Box className={styles.userEmail}>{item.email}</Box>
+                        <Box className={styles.userPhone}>{item.telefone}</Box>
+                        <Box className={styles.userAddress}>
+                          Sem endereço informado
+                        </Box>
+                      </Box>
+                    </td>
+
+                    <td
+                      data-label="Data de Cadastro"
+                      className={styles.registrationDate}
+                    >
+                      {new Date(item.dataDeCadastro).toLocaleDateString(
+                        "pt-BR"
+                      )}
+                    </td>
+
+                    <td data-label="Ações">
+                      <Flex className={styles.actionButtons}>
+                        <EditOutlined
+                          onClick={() => handleEdit(item)}
+                          className={styles.iconEdit}
+                          aria-label="Editar Usuário"
+                        />
+                        <UserDeleteOutlined
+                          onClick={() => handleDelete(item)}
+                          className={styles.iconDelete}
+                          aria-label="Deletar Usuário"
+                        />
+                      </Flex>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         ) : (
           <Flex justify="center" align="center" height="200px">
             <span>Carregando...</span>
           </Flex>
         )}
       </Box>
+
       <EditUserDialog
         isOpen={isEditOpen}
         onClose={closeEditDialog}

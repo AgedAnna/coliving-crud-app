@@ -19,12 +19,22 @@
   color: #ec017a;
 }
 
+.buttonEdit {
+  background-color: #ec017a;
+  color: white;
+}
+
 .button {
   background-color: #ec017a;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .button:hover {
-  color: #ec017a;
+  background-color: #e5006a;
+  color: white;
 }
 
 .spin {
@@ -32,8 +42,207 @@
   color: #868686;
   cursor: pointer;
   margin-right: 16px;
+  transition: color 0.3s ease;
 }
 
 .spin:hover {
   color: #ec017a;
+}
+
+.container {
+  background-color: #f3f4f8;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.syncButton {
+  margin-right: 16px;
+}
+
+.filters {
+  flex: 1;
+  min-width: 200px;
+  margin-right: 16px;
+}
+
+.mainContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.tableContainer {
+  width: 100%;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.userTable th,
+.userTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.userTable th {
+  background-color: #f9fafb;
+}
+
+.avatar {
+  background-color: #f0f0fa;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: bold;
+  color: #ec017a;
+  font-size: 20px;
+}
+
+.userEmail,
+.userPhone {
+  color: #c0c2c2;
+}
+
+.userAddress {
+  font-weight: bold;
+  color: #9d9ca1;
+}
+
+.registrationDate {
+  color: #bdc1c4;
+  font-weight: bold;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Telas Médias (Tablets) */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .addButton {
+    margin-top: 0;
+  }
+
+  .userTable th,
+  .userTable td {
+    padding: 8px;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .userName {
+    font-size: 18px;
+  }
+
+  .iconEdit,
+  .iconDelete {
+    font-size: 20px;
+  }
+}
+
+/* Telas Pequenas (Mobile) */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .syncButton,
+  .filters,
+  .addButton {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .userTable thead {
+    display: none;
+  }
+
+  .userTable tr {
+    display: block;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .userTable td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8px 0;
+    border-bottom: none;
+    position: relative;
+  }
+
+  .userTable td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
+  }
+
+  .userName {
+    font-size: 16px;
+  }
+
+  .actionButtons {
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .iconEdit,
+  .iconDelete {
+    font-size: 18px;
+  }
+
+  .registrationDate {
+    margin-top: 8px;
+    align-self: center;
+  }
 }

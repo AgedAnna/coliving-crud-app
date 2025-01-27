@@ -61,7 +61,7 @@ const CreateUserDialog: React.FC<CreateUserDialogProps> = ({
       cancelText="Cancelar"
       confirmLoading={isSubmitting}
       okButtonProps={{
-        className: styles.button,
+        className: styles.buttonEdit,
       }}
     >
       {isSubmitting ? (

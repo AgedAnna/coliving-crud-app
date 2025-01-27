@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Typography } from "antd";
 import { Pessoa } from "../services/interface";
+import styles from "./styles.module.css";
 
 interface DeleteUserDialogProps {
   isOpen: boolean;
@@ -31,7 +32,9 @@ const DeleteUserDialog: React.FC<DeleteUserDialogProps> = ({
       onCancel={onClose}
       okText="Excluir"
       cancelText="Cancelar"
-      okButtonProps={{ danger: true }}
+      okButtonProps={{
+        className: styles.buttonEdit,
+      }}
     >
       <Text>
         Deseja realmente excluir o usuário <strong>{user?.nome}</strong>?

@@ -55,7 +55,7 @@ const Filters: React.FC<FiltersProps> = ({ onApplyFilters }) => {
         </Col>
 
         <Col span={6}>
-          <Form.Item label="Data de Cadastro" name="dataDeCadastro">
+          <Form.Item label="Cadastro" name="dataDeCadastro">
             <RangePicker />
           </Form.Item>
         </Col>
