@@ -32,17 +32,50 @@ const criarPessoa = async (pessoa) => {
  * Lista todas as pessoas na tabela DynamoDB.
  * @returns {Promise<Array>} - Lista de pessoas.
  */
-const listarPessoas = async () => {
+const listarPessoas = async (filtros = {}) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE_PESSOAS || "peoples",
   };
 
+  let FilterExpression = "";
+  const ExpressionAttributeValues = {};
+
+  if (filtros.nome) {
+    if (FilterExpression) FilterExpression += " AND ";
+    FilterExpression += "contains(nome, :nome)";
+    ExpressionAttributeValues[":nome"] = filtros.nome;
+  }
+
+  if (filtros.email) {
+    if (FilterExpression) FilterExpression += " AND ";
+    FilterExpression += "email = :email"; // Busca exata para email
+    ExpressionAttributeValues[":email"] = filtros.email;
+  }
+
+  if (filtros.tipo) {
+    if (FilterExpression) FilterExpression += " AND ";
+    FilterExpression += "tipo = :tipo";
+    ExpressionAttributeValues[":tipo"] = filtros.tipo;
+  }
+
+  if (filtros.dataInicio && filtros.dataFim) {
+    if (FilterExpression) FilterExpression += " AND ";
+    FilterExpression += "dataDeCadastro BETWEEN :dataInicio AND :dataFim";
+    ExpressionAttributeValues[":dataInicio"] = filtros.dataInicio;
+    ExpressionAttributeValues[":dataFim"] = filtros.dataFim;
+  }
+
+  if (FilterExpression) {
+    params.FilterExpression = FilterExpression;
+    params.ExpressionAttributeValues = ExpressionAttributeValues;
+  }
+
   try {
     const data = await dynamoDB.send(new ScanCommand(params));
-    console.log(`Número de pessoas listadas: ${data.Items.length}`);
+    console.log("Resposta do DynamoDB:", JSON.stringify(data.Items, null, 2));
     return data.Items;
   } catch (error) {
-    console.error(`Erro ao listar pessoas: ${error}`);
+    console.error("Erro ao listar pessoas:", error);
     throw error;
   }
 };

@@ -47,7 +47,6 @@
  * @property {string} email - Email da pessoa.
  * @property {string} tipo - Tipo da pessoa.
  * @property {string} dataDeCadastro - Data de cadastro da pessoa.
- * @property {string} [outroCampo] - Outros campos conforme necessário.
  */
 
 module.exports = {};

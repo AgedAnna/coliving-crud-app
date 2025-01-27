@@ -1,17 +1,10 @@
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
 const { DynamoDBDocumentClient } = require('@aws-sdk/lib-dynamodb');
-const dotenv = require('dotenv');
 
-dotenv.config();
+const region = process.env.AWS_REGION || 'us-east-1';
 
-const client = new DynamoDBClient({
-  region: process.env.AWS_REGION || 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  },
-});
+const ddbClient = new DynamoDBClient({ region });
 
-const dynamoDB = DynamoDBDocumentClient.from(client);
+const dynamoDB = DynamoDBDocumentClient.from(ddbClient);
 
 module.exports = dynamoDB;

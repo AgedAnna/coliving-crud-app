@@ -3,10 +3,14 @@ const dotenv = require("dotenv");
 const serverless = require("serverless-http");
 const pessoaRoutes = require("./routes/pessoaRoutes");
 const { setupSwagger } = require("./utils/swagger");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
+
 app.use(express.json());
 
 app.use("/api", pessoaRoutes);

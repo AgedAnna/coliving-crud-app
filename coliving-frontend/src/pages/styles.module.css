@@ -1,0 +1,39 @@
+.iconEdit {
+  color: #868686;
+  font-size: 23px;
+  margin-right: 22px;
+  transition: color 0.3s ease;
+}
+
+.iconEdit:hover {
+  color: #ec017a;
+}
+
+.iconDelete {
+  color: #868686;
+  font-size: 23px;
+  transition: color 0.3s ease;
+}
+
+.iconDelete:hover {
+  color: #ec017a;
+}
+
+.button {
+  background-color: #ec017a;
+}
+
+.button:hover {
+  color: #ec017a;
+}
+
+.spin {
+  font-size: 20px;
+  color: #868686;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.spin:hover {
+  color: #ec017a;
+}

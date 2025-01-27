@@ -11,9 +11,9 @@ const { importarPessoas } = require("../services/importService");
 
 const criarPessoaHandler = async (req, res) => {
   try {
-    const { nome, telefone, email, tipo, dataDeCadastro } = req.body;
+    const { nome, telefone, email, tipo } = req.body;
 
-    if (!nome || !telefone || !email || !tipo || !dataDeCadastro) {
+    if (!nome || !telefone || !email || !tipo) {
       return res
         .status(400)
         .json({ message: "Todos os campos são obrigatórios." });
@@ -32,7 +32,7 @@ const criarPessoaHandler = async (req, res) => {
       telefone,
       email,
       tipo,
-      dataDeCadastro,
+      dataDeCadastro: new Date().toISOString(),
     };
 
     await criarPessoa(novaPessoa);
@@ -50,7 +50,30 @@ const criarPessoaHandler = async (req, res) => {
 
 const listarPessoasHandler = async (req, res) => {
   try {
-    const pessoas = await listarPessoas();
+    const { nome, email, tipo, dataInicio, dataFim } = req.query;
+
+    const filtros = {};
+
+    if (nome) {
+      filtros.nome = nome;
+    }
+
+    if (email) {
+      filtros.email = filtros.email;
+    }
+
+    if (tipo) {
+      filtros.tipo = tipo;
+    }
+
+    if (dataInicio && dataFim) {
+      filtros.dataDeCadastro = {
+        $gte: new Date(dataInicio),
+        $lte: new Date(dataFim),
+      };
+    }
+
+    const pessoas = await listarPessoas(filtros);
     res.status(200).json(pessoas);
   } catch (error) {
     console.error("Erro ao listar pessoas:", error);
