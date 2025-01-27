@@ -30,7 +30,6 @@ const UsersPage: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<Pessoa | undefined>();
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [filters, setFilters] = useState({});
 
   const [api, contextHolder] = notification.useNotification();
 
@@ -55,7 +54,6 @@ const UsersPage: React.FC = () => {
   }, []);
 
   const handleApplyFilters = (appliedFilters: any) => {
-    setFilters(appliedFilters);
     getPessoas(appliedFilters);
   };
 
